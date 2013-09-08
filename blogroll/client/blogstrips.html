@@ -1,0 +1,14 @@
+<template name="blogstrip3">
+<div id="blog_strip_3_container">
+  <div class="row">
+    {{#each items}}
+      <div class="four columns">
+        <img src="{{imagen_url}}/convert?w=150&h=100" />
+        <h4>{{titulo}}</h4>
+        <small>{{fecha}}</small>
+        <p>{{texto}}</p>
+      </div>
+    {{/each}}
+  </div>
+</div>    
+</template>

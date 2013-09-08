@@ -1,0 +1,49 @@
+<template name="blog_edit_panel">
+  <div id="edit_panel" class="row">
+    <!-- new post div -->
+    <div id="newpost_panel" class="six columns">
+      <fieldset>
+        <h5>NUEVA ENTRADA</h5>
+        <ul>
+          <li class="field">
+             <label class="inline" for="titulo">Título</label>
+            <input name="titulo" class="wide text input" type="text" class="form-control" id="form_newpost_titulo" placeholder="Titulo">
+          </li>
+          <li class="field">
+             <label class="inline" for="texto">Texto</label>
+            <input name="texto" class="wide input textarea" rows="3" type="textarea" class="form-control" id="form_newpost_texto" placeholder="Texto">
+          </li>
+          <li class="field">
+            <label class="inline" for="form_newpost_imagen_nombre">Foto</label>
+            <input class="normal input" name="form_newpost_imagen_nombre" id="form_newpost_imagen_nombre" type="text" placeholder="No hay imagen" disabled/>
+            <input type="hidden" id="form_newpost_imagen_url"/>
+            <div class="btn secondary"><a href="#" id="form_newpost_imagen">Escoger</a></div>
+          </li>
+        </ul>
+        <div class="primary btn"><a href="#" id="form_newpost_submit">Crear</a></div>
+      </fieldset>
+    </div> <!-- /newpost_panel -->
+    <!-- POST LIST EDIT/REMOVE -->
+    <div id="postlist_panel" class="six columns">
+      <h5> EDITAR ENTRADAS</h5>
+      {{#each items}}
+      <div class="edit_postitem">
+        <div class="primary btn small"><a href="#" class="edit_post_btn" data-id="{{_id}}">Editar</a></div>
+        <div class="danger btn small"><a href="#" class="delete_post_btn" data-id="{{_id}}">Borrar</a></div>
+        {{titulo}} &nbsp {{fecha}}
+      </div>
+      <!-- Edit post HIDDEN DIV -->
+      <div id="edit_post_{{_id}}" style="display:none;">
+        <div id="edit_post_container">
+          <form>
+            <input type="text" id="edit_post_titulo_{{_id}}" value="{{titulo}}">
+            <input type="textarea" id="edit_post_texto_{{_id}}" value="{{texto}}">
+            <input type="text" id="edit_post_imagen_{{_id}}" value="{{imagen}}">
+            <button class="btn btn-primary edit_post_submit" data_id="{{_id}}">OK</button>
+          </form>
+        </div>
+      </div><!-- /EDIT_POST_HIDDEN_DIV -->
+      {{/each}}
+    </div>      
+  </div> <!-- /edit_panel -->
+</template>
